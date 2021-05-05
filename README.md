@@ -10,4 +10,4 @@ Users can:
 
 
 ## To Do
-- Set up OMDb API
+- Fix "Movie Not Found!" on initial render
