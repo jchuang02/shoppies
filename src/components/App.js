@@ -1,33 +1,36 @@
 import React from "react";
-import "@shopify/polaris/dist/styles.css";
 import Search from "./Search";
 import Banner from "./Banner";
-import enTranslations from "@shopify/polaris/locales/en.json";
-import { AppProvider, Page, Layout } from "@shopify/polaris";
+import Header from "./Header";
+import Footer from "./Footer";
+import { Container, Col, Row } from "shards-react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "shards-ui/dist/css/shards.min.css";
+import "../utils/app.css";
 import useLocalStorage from "react-use-localstorage";
 
 export default function App() {
   const [nominations, setNominations] = useLocalStorage("[]");
-
   return (
-    <AppProvider i18n={enTranslations} theme={{ colorScheme: "dark" }}>
-      <Page title="The Shoppies">
-        <Layout>
-          <Layout.AnnotatedSection
-            title="Search"
-            description="Shopify and your customers will use this information to contact you."
-          >
+    <React.Fragment>
+      <Header />
+      <Container className="banner-container">
+        <Banner
+          nominations={nominations ? JSON.parse(nominations) : nominations}
+          removeNominee={setNominations}
+        />
+      </Container>
+      <Container className="search-container">
+        <Row>
+          <Col>
             <Search
               nominations={nominations ? JSON.parse(nominations) : nominations}
               nominate={setNominations}
             />
-          </Layout.AnnotatedSection>
-          <Banner
-            nominations={nominations ? JSON.parse(nominations) : nominations}
-            removeNominee={setNominations}
-          />
-        </Layout>
-      </Page>
-    </AppProvider>
+          </Col>
+        </Row>
+      </Container>
+      <Footer/>
+    </React.Fragment>
   );
 }

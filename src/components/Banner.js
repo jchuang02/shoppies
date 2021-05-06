@@ -1,49 +1,81 @@
 import React from "react";
-import { MediaCard } from "@shopify/polaris";
+import {
+  Col,
+  Card,
+  CardTitle,
+  CardSubtitle,
+  CardImg,
+  CardBody,
+  CardFooter,
+  Button,
+  Row,
+} from "shards-react";
 
 export default function Banner({ nominations, removeNominee }) {
-  console.log(nominations.length);
-  const showNominees = nominations.length === 5 ? (
-    nominations.map((theNominee) => {
-      return (
-        <MediaCard
-          title={theNominee.Title}
-          primaryAction={{
-            content: "Remove",
-            onAction: () => {
-              removeNominee(
-                JSON.stringify(
-                  nominations.filter(
-                    (nominee) => nominee.imdbID !== theNominee.imdbID
-                  )
-                )
-              );
-            },
-          }}
-          description={`Released ${theNominee.Year}`}
-          size="small"
+
+  const nomineesFeedback =
+    nominations.length === 5 ? (
+      <div className="nominees-feedback">
+        <p>You have chosen your top 5 nominees</p>
+      </div>
+    ) : (
+      <div className="nominees-feedback">
+        <p>Choose your top 5 movie nominees</p>
+      </div>
+    );
+
+  const showNominees = nominations.map((theNominee) => {
+    return (
+      <Col style={{ flexGrow: 0, width: "20%" }}>
+        <Card
           key={theNominee.imdbID}
+          style={{
+            width: "100%",
+            height: "100%",
+            flexWrap: "wrap",
+            alignContent: "space-between",
+          }}
         >
-          <img
-            alt={`${theNominee.Title} movie poster`}
-            width="100%"
-            height="100%"
-            style={{
-              objectFit: "cover",
-              objectPosition: "center",
-            }}
+          <CardImg
+            top
             src={
               theNominee.Poster !== "N/A"
                 ? theNominee.Poster
                 : "https://img.icons8.com/carbon-copy/100/000000/no-image.png"
             }
+            style={{ maxHeight: "16rem" }}
           />
-        </MediaCard>
-      );
-    })
-  ) : (
-    <p>Choose your top 5 Nominees! You have nominated {nominations.length} films</p>
-  );
+          <CardBody>
+            <CardTitle className="card-title">{theNominee.Title}</CardTitle>
+            <CardSubtitle className="card-subtitle">{`Released ${theNominee.Year}`}</CardSubtitle>
+          </CardBody>
+          <CardFooter>
+            <Button
+              style={{}}
+              block={true}
+              onClick={() => {
+                removeNominee(
+                  JSON.stringify(
+                    nominations.filter(
+                      (nominee) => nominee.imdbID !== theNominee.imdbID
+                    )
+                  )
+                );
+              }}
+              theme="danger"
+            >
+              Remove
+            </Button>
+          </CardFooter>
+        </Card>
+      </Col>
+    );
+  });
 
-  return <div>{showNominees}</div>;
+  return (
+    <React.Fragment>
+      {nomineesFeedback}
+      <Row style={{ contentnAlign: "center" }}>{showNominees}</Row>
+    </React.Fragment>
+  );
 }

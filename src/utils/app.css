@@ -1,0 +1,109 @@
+.banner-container {
+  background: center/contain no-repeat url("../assets/shoppies-award.png");
+  width: 100%;
+  min-height: 25rem;
+  padding: 2rem;
+  max-width: 90%;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 1rem;
+}
+
+.card-footer {
+  padding: 1rem;
+}
+
+.col {
+  flex-basis: auto;
+}
+
+.card-title {
+  font-size: medium;
+}
+
+.card-subtitle {
+  font-size: smaller;
+}
+
+.footer-text {
+  text-align: center;
+  font-size: small;
+}
+
+.header,
+.header-image,
+.header-text {
+  padding: 1rem;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
+  background: #50b83c;
+  color: white;
+}
+
+.header-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: -apple-system, BlinkMacSystemFont, "San Francisco", "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  font-size: 1.5rem;
+  align-self: center;
+}
+
+.header-image {
+  align-self: flex-start;
+}
+
+.home-logo {
+  width: 150px;
+  height: 150px;
+}
+
+.list-group-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: -5px;
+}
+
+.list-text {
+  display: flex column;
+  align-items: center;
+}
+
+.list-group-item-heading, .list-group-item-text {
+  margin: 0;
+  padding: 0.5rem, 0, 0.5rem, 0;
+}
+
+.nominees-feedback {
+  text-align: center;
+  padding: 0.5rem;
+  font-size: larger;
+  font-weight: 500;
+}
+
+.page-title {
+  color: white;
+  font-size: 2.5rem;
+}
+
+.search-container {
+  padding: 30px;
+  margin-bottom: 1rem;
+}
+
+.results-container {
+  padding: 2rem 0 2rem 0;
+}
+
+/*# sourceMappingURL=app.css.map */
