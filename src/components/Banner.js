@@ -20,7 +20,7 @@ export default function Banner({ nominations, removeNominee }) {
       </div>
     );
 
-  const showNominees = nominations.map((theNominee) => {
+  const showNominees = nominations ? nominations.map((theNominee) => {
     return (
       <CustomCard
         nominations={nominations}
@@ -29,7 +29,7 @@ export default function Banner({ nominations, removeNominee }) {
         key={theNominee.imdbID}
       />
     );
-  });
+  }) : "";
 
   return (
     <React.Fragment>
