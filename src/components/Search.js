@@ -5,7 +5,6 @@ import {
   ListGroupItem,
   ListGroupItemHeading,
   ListGroupItemText,
-  FormInput,
   Button,
   Container
 } from "shards-react";
@@ -31,14 +30,21 @@ export default function Search({ nominations, nominate }) {
       const { data } = await omdb.get("", {
         params: {
           s: debouncedTerm,
-          type: "movie"
+          type: "movie",
         },
       });
       if (data.Search) {
-        setResults(data.Search);
+        setResults(
+          //Filters duplicate movie results from omdb API
+          data.Search.filter(
+            (result, index, self) =>
+              index ===
+              self.findIndex((movie) => movie.imdbID === result.imdbID)
+          )
+        );
       } else if (data.Error === "Incorrect IMDb ID.") {
         setResults("");
-      } else  {
+      } else {
         setResults(data.Error);
       }
     };
@@ -56,42 +62,52 @@ export default function Search({ nominations, nominate }) {
   };
 
   //Renders the results from omdb API based on the users search term.
-  const renderedResults = typeof(results) !== "string" ? results.map((result) => {
-    return (
-      <ListGroupItem title={result.Title} key={result.imdbID}>
-        <div className="list-text">
-          <ListGroupItemHeading>{result.Title}</ListGroupItemHeading>
-          <ListGroupItemText>{`Released ${result.Year}`}</ListGroupItemText>
-        </div>
-        <Button
-          disabled={
-            !(nominations.length < 5) || alreadyNominated(result.imdbID)
-          }
-          onClick={() => {
-            if (!nominations) {
-              nominate(`[${JSON.stringify(result)}]`);
-            } else {
-              nominate(JSON.stringify([...nominations, result]));
-            }
-          }}
-        >
-          Nominate
-        </Button>
-      </ListGroupItem>
+  const renderedResults =
+    typeof results !== "string" ? (
+      results.map((result) => {
+        return (
+          <ListGroupItem title={result.Title} key={result.imdbID}>
+            <div className="list-text">
+              <ListGroupItemHeading>{result.Title}</ListGroupItemHeading>
+              <ListGroupItemText>{`Released ${result.Year}`}</ListGroupItemText>
+            </div>
+            <Button
+              disabled={
+                !(nominations.length < 5) || alreadyNominated(result.imdbID)
+              }
+              onClick={() => {
+                if (!nominations) {
+                  nominate(`[${JSON.stringify(result)}]`);
+                } else {
+                  nominate(JSON.stringify([...nominations, result]));
+                }
+              }}
+            >
+              Nominate
+            </Button>
+          </ListGroupItem>
+        );
+      })
+    ) : (
+      <p className="search-feedback">{results}</p>
     );
-  }) : (<p class="search-feedback">{results}</p>);
 
   return (
     <Container>
-      <label>Movie Title</label>
-      <FormInput
-        type="search"
-        value={term}
-        placeholder="Search Movies"
-        onChange={(e) => setTerm(e.target.value)}
-      />
+      <div className="input-container form-control">
+        <i class="fas fa-search"></i>
+        <input
+          type="search"
+          value={term}
+          className="search-input"
+          placeholder="Search Movies"
+          onChange={(e) => setTerm(e.target.value)}
+        />
+      </div>
       <Container className="results-container">
-        <ListGroup tag="ol" type="1">{renderedResults}</ListGroup>
+        <ListGroup tag="ol" type="1">
+          {renderedResults}
+        </ListGroup>
       </Container>
     </Container>
   );

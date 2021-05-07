@@ -13,3 +13,7 @@ Users can:
 
 ## To Do
 - Fix "Movie Not Found!" on initial render
+- Fix broken Cards on Mobile
+- Add share link capability
+- Remove react-spring
+- implement CSS animations

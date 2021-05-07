@@ -9,13 +9,13 @@ export default function Header() {
           <img
             src={shopifyLogo}
             className="home-logo"
-            alt="shopify bag logo"
+            alt=""
           ></img>
         </a>
       </div>
       <div className="header-text">
         <h1 className="page-title">Shoppies Awards 2021</h1>
-        <p>Choose your movie nominations for this year's Shoppies Award!</p>
+        <p>Vote for your favorite movies in this year's Shoppies Awards!</p>
       </div>
     </div>
   );
