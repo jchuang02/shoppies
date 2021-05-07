@@ -1,5 +1,7 @@
 # Shoppies Web Application
 Shopify has branched out into movie award shows! This app manages movie nominations for the upcoming Shoppies.
+A link to a live version of this application can be found here [Shoppies](https://www.omdbapi.com/).
+This application was built for Shopify's Front End Developer Intern Challenge 2021.
 
 ## Features
 Users can:
@@ -10,10 +12,12 @@ Users can:
 - The nomination list is saved if the user leaves the page (via LocalStorage)
 - Displays a banner when the user has 5 nominations with movie poster images
 
+## Technologies
+- [React](https://reactjs.org/) with Hooks
+- [omdb API](https://www.omdbapi.com/) for movie data
+- [Shards](https://designrevision.com/downloads/shards-react/) React Component Framework
+- [Axios](https://www.npmjs.com/package/axios) for HTTP requests
+- [Heroku](https://www.heroku.com/) for build and live deployment
 
 ## To Do
-- Fix "Movie Not Found!" on initial render
-- Fix broken Cards on Mobile
-- Add share link capability
-- Remove react-spring
-- implement CSS animations
+- Add share link capability via Query parameters
