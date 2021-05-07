@@ -22,7 +22,7 @@ export default function App() {
 
   useEffect(() => {
     //Confetti animation when 5 nominees are chosen by the user.
-    if (JSON.parse(nominations).length === 5) {
+    if (nominations && JSON.parse(nominations).length === 5) {
       const celebrate = () => {
         for (let i = 0; i < 100; i++) {
           // Random rotation

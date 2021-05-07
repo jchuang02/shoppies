@@ -95,7 +95,7 @@ export default function Search({ nominations, nominate }) {
   return (
     <Container>
       <div className="input-container form-control">
-        <i class="fas fa-search"></i>
+        <i className="fas fa-search"></i>
         <input
           type="search"
           value={term}
