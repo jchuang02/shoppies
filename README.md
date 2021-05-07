@@ -21,3 +21,4 @@ Users can:
 
 ## To Do
 - Add share link capability via Query parameters
+- Write out development process in Readme
