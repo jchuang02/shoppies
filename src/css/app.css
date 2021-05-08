@@ -235,6 +235,36 @@ body {
   outline: none;
 }
 
+@media only screen and (max-width: 800px) {
+  .card-title {
+    font-size: smaller;
+  }
+
+  .card-subtitle {
+    font-size: xx-small;
+  }
+
+  .header-text {
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 400;
+  }
+
+  .page-title {
+    font-size: 28px;
+  }
+
+  .list-group-item-heading {
+    font-size: 1rem;
+    max-height: 3rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  .list-group-item-text {
+    font-size: 0.8rem;
+  }
+}
 @media only screen and (max-width: 1000px) {
   .search-input {
     width: 80%;
@@ -260,14 +290,6 @@ body {
 
   .card-img-top {
     max-height: 32rem;
-  }
-
-  .list-group-item-heading {
-    font-size: 1rem;
-  }
-
-  .list-group-item-text {
-    font-size: 0.8rem;
   }
 }
 
