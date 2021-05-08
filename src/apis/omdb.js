@@ -1,6 +1,7 @@
 import axios from 'axios';
+import env from "react-dotenv";
 
-const KEY = '7dfd415f';
+const KEY = env.API_KEY;
 
 export default axios.create({
     baseURL: `https://www.omdbapi.com/?apikey=${KEY}`,
