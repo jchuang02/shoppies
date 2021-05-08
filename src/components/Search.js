@@ -6,7 +6,7 @@ import {
   ListGroupItemHeading,
   ListGroupItemText,
   Button,
-  Container
+  Container,
 } from "shards-react";
 
 export default function Search({ nominations, nominate }) {
@@ -53,12 +53,8 @@ export default function Search({ nominations, nominate }) {
 
   //Disables Nominate Button when a movie is already in the nomination list.
   const alreadyNominated = (id) => {
-    for (let i = 0; i < nominations.length; i++) {
-      if (id === nominations[i].imdbID) {
-        return true;
-      }
-    }
-    return false;
+    const found = nominations.find((movie) => movie.imdbID === id);
+    return found !== undefined;
   };
 
   //Renders the results from omdb API based on the users search term.
@@ -67,24 +63,34 @@ export default function Search({ nominations, nominate }) {
       results.map((result) => {
         return (
           <ListGroupItem title={result.Title} key={result.imdbID}>
-            <div className="list-text">
-              <ListGroupItemHeading>{result.Title}</ListGroupItemHeading>
-              <ListGroupItemText>{`Released ${result.Year}`}</ListGroupItemText>
-            </div>
-            <Button
-              disabled={
-                !(nominations.length < 5) || alreadyNominated(result.imdbID)
+            <img
+              alt={`${result.Title} Movie Poster`}
+              src={
+                result.Poster !== "N/A"
+                  ? result.Poster
+                  : "https://img.icons8.com/material-outlined/192/000000/no-image.png"
               }
-              onClick={() => {
-                if (!nominations) {
-                  nominate(`[${JSON.stringify(result)}]`);
-                } else {
-                  nominate(JSON.stringify([...nominations, result]));
+            ></img>
+            <div className="list-container">
+              <div className="list-text">
+                <ListGroupItemHeading>{result.Title}</ListGroupItemHeading>
+                <ListGroupItemText>{`Released ${result.Year}`}</ListGroupItemText>
+              </div>
+              <Button
+                disabled={
+                  !(nominations.length < 5) || alreadyNominated(result.imdbID)
                 }
-              }}
-            >
-              Nominate
-            </Button>
+                onClick={() => {
+                  if (!nominations) {
+                    nominate(`[${JSON.stringify(result)}]`);
+                  } else {
+                    nominate(JSON.stringify([...nominations, result]));
+                  }
+                }}
+              >
+                Nominate
+              </Button>
+            </div>
           </ListGroupItem>
         );
       })

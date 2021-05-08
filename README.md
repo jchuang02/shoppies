@@ -19,6 +19,13 @@ Users can:
 - [Axios](https://www.npmjs.com/package/axios) for HTTP requests
 - [Heroku](https://www.heroku.com/) for build and live deployment
 
+## Application Limitations
+- Search algorithm is performed by the omdb API
+- Users can only query by movie title (not year released)
+- Data from omdb API is limited to movies for this application
+- Currently no way to share a user's nominations
+
 ## To Do
 - Add share link capability via Query parameters
 - Write out development process in Readme
+- Secure omdb API key to prevent abuse

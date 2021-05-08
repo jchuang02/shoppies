@@ -6,7 +6,7 @@ import Footer from "./Footer";
 import { Container, Col, Row } from "shards-react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "shards-ui/dist/css/shards.min.css";
-import "../utils/app.css";
+import "../css/app.css";
 import useLocalStorage from "react-use-localstorage";
 import {
   colorBlue,
@@ -26,18 +26,18 @@ export default function App() {
       const celebrate = () => {
         for (let i = 0; i < 100; i++) {
           // Random rotation
-          let randomRotation = Math.floor(Math.random() * 360);
+          const randomRotation = Math.floor(Math.random() * 360);
           // Random Scale
-          let randomScale = Math.random() * 1;
+          const randomScale = Math.random() * 1;
           // Random width & height between 0 and viewport
-          let randomWidth = Math.floor(
+          const randomWidth = Math.floor(
             Math.random() *
               Math.max(
                 document.documentElement.clientWidth,
                 window.innerWidth || 0
               )
           );
-          let randomHeight = Math.floor(
+          const randomHeight = Math.floor(
             Math.random() *
               Math.max(
                 document.documentElement.clientHeight,
@@ -46,30 +46,30 @@ export default function App() {
           );
 
           // Random animation-delay
-          let randomAnimationDelay = Math.floor(Math.random() * 15);
+          const randomAnimationDelay = Math.floor(Math.random() * 15);
 
           // Random colors
-          let colors = [
+          const colors = [
             colorBlue,
             colorOrange,
             colorYellow,
             colorPurple,
             colorRed,
-            colorGreen
+            colorGreen,
           ];
 
-          let randomColor = colors[Math.floor(Math.random() * colors.length)];
+          const randomColor = colors[Math.floor(Math.random() * colors.length)];
 
           // Create confetti pieces
-          let confetti = document.createElement("div");
+          const confetti = document.createElement("div");
+          confetti.style.animationDelay = randomAnimationDelay + "s";
           confetti.className = "confetti";
-          confetti.style.top = randomHeight + "px";
-          confetti.style.right = randomWidth + "px";
           confetti.style.backgroundColor = randomColor;
           confetti.style.obacity = randomScale;
+          confetti.style.right = randomWidth + "px";
+          confetti.style.top = randomHeight + "px";
           confetti.style.transform =
-            "skew(15deg) rotate(" + randomRotation + "deg)";
-          confetti.style.animationDelay = randomAnimationDelay + "s";
+            "skew(16deg) rotate(" + randomRotation + "deg)";
           document.getElementById("confetti-wrapper").appendChild(confetti);
         }
       };
@@ -86,7 +86,7 @@ export default function App() {
   }, [nominations]);
 
   return (
-    <React.Fragment>
+    <>
       <Header />
       <Container className="banner-container">
         <Banner
@@ -106,6 +106,6 @@ export default function App() {
       </Container>
       <div id="confetti-wrapper"></div>
       <Footer />
-    </React.Fragment>
+    </>
   );
 }

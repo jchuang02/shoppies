@@ -32,9 +32,9 @@ export default function Banner({ nominations, removeNominee }) {
   }) : "";
 
   return (
-    <React.Fragment>
+    <>
       {nomineesFeedback}
-      <Row className="cards" style={{ contentnAlign: "center" }}>{showNominees}</Row>
-    </React.Fragment>
+      <Row className="cards">{showNominees}</Row>
+    </>
   );
 }

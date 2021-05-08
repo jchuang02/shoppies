@@ -3,7 +3,7 @@ import shopifyLogo from "../assets/shopify-glyph.png";
 
 export default function Header() {
   return (
-    <div className="header">
+    <header className="header">
       <div className="header-image">
         <a href="/">
           <img
@@ -17,6 +17,6 @@ export default function Header() {
         <h1 className="page-title">Shoppies Awards 2021</h1>
         <p>Vote for your favorite movies in this year's Shoppies Awards!</p>
       </div>
-    </div>
+    </header>
   );
 }

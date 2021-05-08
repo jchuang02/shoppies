@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <div className="footer">
+    <footer className="footer">
       <div className="footer-text">
           No Image icon by{" "}
         <a
@@ -13,6 +13,6 @@ export default function Footer() {
         </a>
         <p>Made with ❤️ in Seattle</p>
       </div>
-    </div>
+    </footer>
   );
 }
