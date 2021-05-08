@@ -1,6 +1,6 @@
 # Shoppies Web Application
 Shopify has branched out into movie award shows! This app manages movie nominations for the upcoming Shoppies.
-A link to a live version of this application can be found here [Shoppies](https://www.omdbapi.com/).
+A link to a live version of this application can be found here [Shoppies](https://hidden-river-16649.herokuapp.com/).
 This application was built for Shopify's Front End Developer Intern Challenge 2021.
 
 ## Features
